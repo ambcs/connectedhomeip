@@ -40,7 +40,7 @@
 #include <platform/CHIPDeviceLayer.h>
 #include <setup_payload/ManualSetupPayloadGenerator.h>
 #include <setup_payload/QRCodeSetupPayloadGenerator.h>
-#include <static-supported-temperature-levels.h>
+//#include <static-supported-temperature-levels.h>
 #include <support/CHIPMem.h>
 #if CONFIG_ENABLE_AMEBA_TEST_EVENT_TRIGGER
 #include <test_event_trigger/AmebaTestEventTriggerDelegate.h>
@@ -68,7 +68,7 @@ app::Clusters::NetworkCommissioning::Instance
     sWiFiNetworkCommissioningInstance(kNetworkCommissioningEndpointMain /* Endpoint Id */,
                                       &(NetworkCommissioning::AmebaWiFiDriver::GetInstance()));
 
-app::Clusters::TemperatureControl::AppSupportedTemperatureLevelsDelegate sAppSupportedTemperatureLevelsDelegate;
+//app::Clusters::TemperatureControl::AppSupportedTemperatureLevelsDelegate sAppSupportedTemperatureLevelsDelegate;
 } // namespace
 
 void NetWorkCommissioningInstInit()
@@ -163,7 +163,7 @@ static void InitServer(intptr_t context)
     InitBindingHandler();
     InitManualOperation();
 #endif
-    app::Clusters::TemperatureControl::SetInstance(&sAppSupportedTemperatureLevelsDelegate);
+//    app::Clusters::TemperatureControl::SetInstance(&sAppSupportedTemperatureLevelsDelegate);
 }
 
 extern "C" void ChipTest(void)
