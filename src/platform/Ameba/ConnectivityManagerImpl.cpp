@@ -176,7 +176,7 @@ ConnectivityManager::WiFiStationMode ConnectivityManagerImpl::_GetWiFiStationMod
 {
     if (mWiFiStationMode != kWiFiStationMode_ApplicationControlled)
     {
-        mWiFiStationMode = (wifi_mode == RTW_MODE_STA) ? kWiFiStationMode_Enabled : kWiFiStationMode_Disabled;
+        mWiFiStationMode = (wifi_mode == RTW_MODE_STA|| wifi_mode == RTW_MODE_STA_AP) ? kWiFiStationMode_Enabled : kWiFiStationMode_Disabled;
     }
     return mWiFiStationMode;
 }
@@ -480,8 +480,8 @@ void ConnectivityManagerImpl::DriveStationState()
     {
         err = Internal::AmebaUtils::StartWiFi();
         SuccessOrExit(err);
-        err = Internal::AmebaUtils::EnableStationMode();
-        SuccessOrExit(err);
+        //err = Internal::AmebaUtils::EnableStationMode();
+        //SuccessOrExit(err);
     }
 
     // Determine if the WiFi layer thinks the station interface is currently connected.
