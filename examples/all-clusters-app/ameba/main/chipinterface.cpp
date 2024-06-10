@@ -181,7 +181,7 @@ static void InitServer(intptr_t context)
     InitManualOperation();
 #endif
     app::Clusters::TemperatureControl::SetInstance(&sAppSupportedTemperatureLevelsDelegate);
-    MatterMicrowaveOvenServerInit();
+    //MatterMicrowaveOvenServerInit();
 #if CONFIG_ENABLE_AMEBA_TEST_EVENT_TRIGGER
     static SmokeCOTestEventTriggerHandler sSmokeCOTestEventTriggerHandler;
     Server::GetInstance().GetTestEventTriggerDelegate()->AddHandler(&sSmokeCOTestEventTriggerHandler);
