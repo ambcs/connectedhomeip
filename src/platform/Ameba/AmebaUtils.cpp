@@ -29,7 +29,9 @@
 #include <platform/Ameba/AmebaConfig.h>
 #include <platform/Ameba/AmebaUtils.h>
 #include <platform/Ameba/ConfigurationManagerImpl.h>
+#include <platform/Ameba/NetworkCommissioningDriver.h>
 
+using namespace ::chip::DeviceLayer;
 using namespace ::chip::DeviceLayer::Internal;
 using chip::DeviceLayer::Internal::DeviceNetworkInfo;
 
@@ -136,6 +138,9 @@ CHIP_ERROR AmebaUtils::SetWiFiConfig(rtw_wifi_config_t * config)
     SuccessOrExit(err);
 
     err = PersistedStorage::KeyValueStoreMgr().Put(kWiFiCredentialsKeyName, config->password, sizeof(config->password));
+    SuccessOrExit(err);
+
+    err = NetworkCommissioning::AmebaWiFiDriver::GetInstance().SetConfiguredNetwork(config);
     SuccessOrExit(err);
 
 exit:
