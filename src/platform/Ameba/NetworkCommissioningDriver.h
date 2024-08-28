@@ -113,6 +113,8 @@ public:
     void OnScanWiFiNetworkDone();
     void OnNetworkStatusChange();
 
+    CHIP_ERROR SetConfiguredNetwork(rtw_wifi_config_t * config);
+
     CHIP_ERROR SetLastDisconnectReason(const ChipDeviceEvent * event);
     int32_t GetLastDisconnectReason();
 

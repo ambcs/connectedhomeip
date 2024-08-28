@@ -256,6 +256,20 @@ void AmebaWiFiDriver::OnScanWiFiNetworkDone()
     }
 }
 
+CHIP_ERROR AmebaWiFiDriver::SetConfiguredNetwork(rtw_wifi_config_t * config)
+{
+    if (mStagingNetwork.ssidLen == 0)
+    {
+        memcpy(mStagingNetwork.ssid, config->ssid, sizeof(config->ssid));
+        memcpy(mStagingNetwork.credentials, config->password, sizeof(config->password));
+
+        mStagingNetwork.ssidLen        = strlen((const char *) config->ssid);
+        mStagingNetwork.credentialsLen = strlen((const char *) config->password);
+    }
+
+    return CHIP_NO_ERROR;
+}
+
 CHIP_ERROR GetConfiguredNetwork(Network & network)
 {
     rtw_wifi_setting_t wifi_setting;
